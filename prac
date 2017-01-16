@@ -1,0 +1,167 @@
+<html>
+<head><title></title>
+    <script>
+var leave=["20","10","5","20"];
+    </script>
+</head>
+<body style="background-color:#EEE">
+    <div style="position:relative;left:10px;">
+        <h3>To request or report leave, enter the required data and choose Review.</h3>
+        <form onsubmit="return validate()">
+            <b>Type of leave:</b><select name="select" id="select">
+                <option>default</option>
+                <option>Earned leave</option>
+                <option>Paid leave </option>
+                <option>Marriage leave</option>
+                <option>Maternity leave</option>
+            </select><span id="errselect"></span>
+
+            <p>	 * Enter 'F' in the 'Half Day (F/S)' Field -- To apply for Half Day in First Session; OR Enter 'S' in the 'Half Day (F/S)'  Field -- To apply for Half day in Second Session; Otherwise keep it blank * Backdated leaves can be applied only till the 10th day of the current month for all types of leaves availed in the previous month.</p>
+
+            <b>Date:</b><input type="date" id="date1">&nbsp&nbsp&nbsp&nbsp&nbsp To <input type="date" id="date2">
+            <span id="dateerror"></span>
+            </br>
+            </br>
+            <b>Time:</b><input type="time" id="time1">&nbsp&nbsp&nbsp&nbsp&nbsp To <input type="time" id="time2">
+            <span id="timeerror"></span></span></br>
+            </br>
+            <b>Full day:</b> <input type="checkbox" onchange='verify(this)';>
+            </br>
+            </br>
+            <b>Half day(f/s):</b><input type="text" id="text" size="1"><span id="dayss"></span></span>
+            </br>
+            </br>
+            <b>Approver:</b><input type="text" size="3" id="approver"><span id="approveerror"></span>
+            </br>
+            </br>
+            <fieldset style="width:50px">
+                <legend><b>Notes for Approver</b></legend>
+                <textarea cols="50" rows="5"></textarea>
+            </fieldset>
+            <input type="submit" value="submit" style="background-color:#1ac6ff"/>
+        </form>
+        
+
+    </div>
+
+<script>
+    function verify(v) {
+
+        if (v.checked == true) {
+            document.getElementById("text").disabled = true;
+        } else {
+            document.getElementById("text").disabled = false;
+        }
+
+
+
+    }
+
+    function validate() {
+
+        var check = document.getElementById("select").value;
+        if (check == "default") {
+            document.getElementById("errselect").innerText = " please select type of leave";
+            document.getElementById("errselect").style.color = " red";
+            return false;
+        }
+        var date1 = document.getElementById("date1");
+        var date2 = document.getElementById("date2");
+        var time11 = document.getElementById("time1");
+        var time22 = document.getElementById("time2");
+        var time1 = time11.value;
+        var time2 = time22.value;
+        var day = document.getElementById("text").value;
+     
+
+
+        var firstDate = date1.value;
+
+        var secondDate = date2.value;
+
+        if (secondDate < firstDate) {
+            document.getElementById("dateerror").innerText = " please select valid date";
+            return false;
+        }
+
+        var date11 = new Date(firstDate);
+        var date22 = new Date(secondDate);
+        var timeDiff = Math.abs(date22.getTime() - date11.getTime());
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+
+
+        if (check = "Earned leave") {
+            if (diffDays > leave[0]) {
+                document.getElementById("dateerror").innerText = "not available,available days"+diffDays;
+                return false;
+            }
+
+        }
+        else if (check = "Paid leave") {
+            if (diffDays > leave[1]) {
+                document.getElementById("dateerror").innerText = "not available";
+                return false;
+            }
+
+        }
+        else if (check = "Marriage leave") {
+            if (diffDays > leave[2]) {
+                document.getElementById("dateerror").innerText = "not available";
+                return false;
+            }
+        }
+
+        else if (check = "Maternity leave") {
+            if (diffDays > leave[3]) {
+                document.getElementById("dateerror").innerText = "not available";
+                return false;
+            }
+        }
+
+        if (time1 == "" || time2 == "") {
+            document.getElementById("timeerror").innerText = "please fill time details";
+            return false;
+        }
+        alert("checking")
+
+        if (day != "f" || day != "s") {
+          
+        
+            alert(day);
+        document.getElementById("dayss").innerHTML = "please eneter valid input";
+        return false;
+    }
+        
+
+    }
+    function lastcheck() {
+        var app = document.getElementById("approver").value;
+        if (app = "") {
+            document.getElementById("approveerror").innerHTML = "please provide approver name";
+            return false;
+        }
+        else {
+            return true;
+        }
+
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
