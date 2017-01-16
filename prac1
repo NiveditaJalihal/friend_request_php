@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body style="background-color: #e5e5e5">
+<div style="position:relative;left:300px;width:600px;">
+<form>
+<b style="font-size:30px;">Register</b>
+<hr>
+<input type="text" placeholder="First Name" name="fname" id="fname" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="text" placeholder="Last Name" name="lname" id="lname" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><br><br>
+<input type="text" placeholder="Employee Id" name="empid" id="empid" size="49"style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><br><br>
+<input type="date" placeholder="Date Of Birth" name="dob" id="dob"size="49" style="height:30px;width:900x;background-color:#fff;font-size:20px;border-radius:5px;"><br><br>
+<input type="email" placeholder="Email" name="email" id="email"size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><br><br>
+<input type="text" placeholder="Contact Number" name="mobnumber" id="mobnumber" size="49"style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><br><br>
+<input type="text" placeholder="City" name="city" id="city"style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="text" placeholder="State" name="state" id="state" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><br><br>
+<input type="submit" value="submit" style="height:30px;width:200x;background-color:#428bca;font-size:20px;border-radius:5px;" />
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
