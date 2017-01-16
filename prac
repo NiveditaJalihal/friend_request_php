@@ -1,22 +1,22 @@
 <html>
-<head><title></title>
-    <script>
-var leave=["20","10","5","20"];
-    </script>
+<head>
+
+<title></title>
+    
 </head>
 <body style="background-color:#EEE">
     <div style="position:relative;left:10px;">
         <h3>To request or report leave, enter the required data and choose Review.</h3>
-        <form onsubmit="return validate()">
+        <form onsubmit="return validate()" action="demo.html">
             <b>Type of leave:</b><select name="select" id="select">
-                <option>default</option>
+                <option>--select--</option>
                 <option>Earned leave</option>
                 <option>Paid leave </option>
                 <option>Marriage leave</option>
                 <option>Maternity leave</option>
             </select><span id="errselect"></span>
 
-            <p>	 * Enter 'F' in the 'Half Day (F/S)' Field -- To apply for Half Day in First Session; OR Enter 'S' in the 'Half Day (F/S)'  Field -- To apply for Half day in Second Session; Otherwise keep it blank * Backdated leaves can be applied only till the 10th day of the current month for all types of leaves availed in the previous month.</p>
+            <p> * Enter 'F' in the 'Half Day (F/S)' Field -- To apply for Half Day in First Session; OR Enter 'S' in the 'Half Day (F/S)'  Field -- To apply for Half day in Second Session; Otherwise keep it blank * Backdated leaves can be applied only till the 10th day of the current month for all types of leaves availed in the previous month.</p>
 
             <b>Date:</b><input type="date" id="date1">&nbsp&nbsp&nbsp&nbsp&nbsp To <input type="date" id="date2">
             <span id="dateerror"></span>
@@ -45,7 +45,16 @@ var leave=["20","10","5","20"];
     </div>
 
 <script>
-    function verify(v) {
+    var leave = ["20", "10", "5", "20"];
+   
+
+
+
+
+
+
+   function verify(v) {
+  
 
         if (v.checked == true) {
             document.getElementById("text").disabled = true;
@@ -58,32 +67,57 @@ var leave=["20","10","5","20"];
     }
 
     function validate() {
+	 var c=0;
+        document.getElementById("errselect").innerText ="";
+		document.getElementById("dateerror").innerText ="";
+		document.getElementById("timeerror").innerText="";
+		document.getElementById("dayss").innerText="";
+		
+
+
+
+       
+        var time11 = document.getElementById("time1");
+        var time22 = document.getElementById("time2");
+        var time1 = time11.value;
+        var time2 = time22.value;
+        var day = document.getElementById("text").value;
+       
 
         var check = document.getElementById("select").value;
-        if (check == "default") {
+        if (check == "--select--") {
+		c++;
             document.getElementById("errselect").innerText = " please select type of leave";
             document.getElementById("errselect").style.color = " red";
             return false;
         }
         var date1 = document.getElementById("date1");
         var date2 = document.getElementById("date2");
-        var time11 = document.getElementById("time1");
-        var time22 = document.getElementById("time2");
-        var time1 = time11.value;
-        var time2 = time22.value;
-        var day = document.getElementById("text").value;
-     
-
-
         var firstDate = date1.value;
-
         var secondDate = date2.value;
-
-        if (secondDate < firstDate) {
-            document.getElementById("dateerror").innerText = " please select valid date";
-            return false;
+       if (firstDate == "") {
+	   c++;
+           document.getElementById("dateerror").innerText = " please select valid first date";
+           document.getElementById("dateerror").style.color = " red";
+           return false;
         }
 
+        if (secondDate == "") {
+		c++;
+            document.getElementById("dateerror").innerText = " please select valid second date";
+            document.getElementById("dateerror").style.color = " red";
+            return false;
+        }
+       
+
+
+        if (secondDate < firstDate) {
+		c++;
+            document.getElementById("dateerror").innerText = " please select valid date";
+            document.getElementById("dateerror").style.color = " red";
+            return false;
+        }
+var app = document.getElementById("approver").value;
         var date11 = new Date(firstDate);
         var date22 = new Date(secondDate);
         var timeDiff = Math.abs(date22.getTime() - date11.getTime());
@@ -91,58 +125,91 @@ var leave=["20","10","5","20"];
 
 
 
-        if (check = "Earned leave") {
+        if (check == "Earned leave") {
+		c++;
             if (diffDays > leave[0]) {
-                document.getElementById("dateerror").innerText = "not available,available days"+diffDays;
+                document.getElementById("dateerror").innerText = "not available,available days" + leave[0];
+                document.getElementById("dateerror").style.color = " red";
                 return false;
             }
 
         }
-        else if (check = "Paid leave") {
+         if (check == "Paid leave") {
+		 
             if (diffDays > leave[1]) {
-                document.getElementById("dateerror").innerText = "not available";
+			c++;
+                document.getElementById("dateerror").innerText = "not available,available days" + leave[1];
+                document.getElementById("dateerror").style.color = " red";
                 return false;
             }
 
         }
-        else if (check = "Marriage leave") {
+         if (check == "Marriage leave") {
             if (diffDays > leave[2]) {
-                document.getElementById("dateerror").innerText = "not available";
+			c++;
+                document.getElementById("dateerror").innerText = "not available,available days" + leave[2];
+                document.getElementById("dateerror").style.color = " red";
                 return false;
             }
         }
 
-        else if (check = "Maternity leave") {
+         if (check == "Maternity leave") {
             if (diffDays > leave[3]) {
-                document.getElementById("dateerror").innerText = "not available";
+			c++;
+                document.getElementById("dateerror").innerText = "not available,available days" + leave[3];
+                document.getElementById("dateerror").style.color = " red";
                 return false;
             }
         }
+
+         if (time1 == "") {
+		 c++;
+             document.getElementById("timeerror").innerText = " please select valid first time";
+             document.getElementById("timeerror").style.color = " red";
+             return false;
+         }
+         if (time2 == "") {
+		 c++;
+             document.getElementById("timeerror").innerText = " please select valid second time";
+             document.getElementById("timeerror").style.color = " red";
+             return false;
+         }
 
         if (time1 == "" || time2 == "") {
+		c++;
             document.getElementById("timeerror").innerText = "please fill time details";
+            document.getElementById("timeerror").style.color = " red";
             return false;
         }
-        alert("checking")
+       
 
-        if (day != "f" || day != "s") {
+        if (day==""&& document.getElementById("text").disabled == false ) {
           
-        
-            alert(day);
-        document.getElementById("dayss").innerHTML = "please eneter valid input";
+        c++;
+           
+            document.getElementById("dayss").innerText = "please eneter valid input";
+            document.getElementById("dayss").style.color = " red";
         return false;
     }
+	if ((day!="f" && day!="s")&&  document.getElementById("text").disabled == false ){
+	c++;
+            document.getElementById("dayss").innerText = "please eneter valid1 input";
+            document.getElementById("dayss").style.color = " red";
+        return false;
+	
+	
+	
+	}
+	
+      if (app=="") {
+	  c++;
+	
+	        
+            document.getElementById("approveerror").innerText = "please provide approver name";
+            document.getElementById("approveerror").style.color = "red";
+			  return false;
+            
         
-
-    }
-    function lastcheck() {
-        var app = document.getElementById("approver").value;
-        if (app = "") {
-            document.getElementById("approveerror").innerHTML = "please provide approver name";
-            return false;
-        }
-        else {
-            return true;
         }
 
 }
@@ -164,4 +231,4 @@ var leave=["20","10","5","20"];
 
 
 </body>
-</html>
+</html>​
