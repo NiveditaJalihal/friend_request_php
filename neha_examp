@@ -1,11 +1,11 @@
-html>
+<html>
 	<head>
 		<style>
 		</style>
        
 	</head>
 	<body bgcolor="b2ffcc">
-		<form onsubmit="return f1()" action="index1.html">
+		<form onsubmit="return f1()"> 
      <h3><font color="blue">Registration</font></h3>
 	<font color="blue">Enter Your Full Name</font><input type="text" placeholder="FirstName" id="fname"/>   <input type="text" placeholder="LastName" id="lname"/><br/><br/>
 	<font color="blue">Enter Your DOB</font><input type="date" id="dob"/><span id="span1" fontcolor="red">Empty</span><br/><br/>
@@ -34,20 +34,19 @@ html>
 
 </form>
  <script>
-		alert("jkfhdshk0");
+		
             function f1()
             {
-                var fname = document.getElementById("fname");
-                var lname = document.getElementById("lname");
-                var address = document.getElementById("address");
-                var email = document.getElementById("email");
-                var db = document.getElementById("dob");
+                var fname = document.getElementById("fname").value;
+                var lname = document.getElementById("lname").value;
+                var address = document.getElementById("address").value;
+                var email = document.getElementById("email").value;
+                var db = document.getElementById("dob").value;
                 var d = new Date();
-                var cur_date = new Date(d);
-                var dob = new Date(dob.value);*/
-                console.log("cur_date");
-                alert("dob");
-                if (fname.value == "" || lname.value == "" || address.value == "" || email.value == "")
+               var cur_date = new Date(d);
+               
+               
+                if (fname == "" || lname == "" || address == "" || email == "")
                 {
                     alert("the field cannot be empty");
                     return false;
