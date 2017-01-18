@@ -1,0 +1,43 @@
+<html>
+<head>
+</head>
+<body>
+<div id="div1">
+                <input type="text" placeholder="first name" /><input type="text" id="div1" placeholder="Last name" />
+                <button type="button" id="1" name="button" onclick="add()">Add</button><button type="button" id="100" onclick="remove(this)">Remove</button>
+
+            </div>
+
+
+
+
+
+
+
+<script>
+function add(){
+var d2 = document.getElementById("div1");
+var  d1=document.createElement("div");
+d1.innerHTML=' <input type="text" placeholder="first name" />\<input type="text" id="div1" placeholder="Last name" />\
+                <button type="button" id="1" name="button" onclick="add()" >Add</button><button type="button" id="100" onclick="remove(this)">Remove</button>';
+
+
+				d2.appendChild(d1);
+				}
+function remove(input){
+document.getElementById('div1').removeChild( input.parentNode );
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
