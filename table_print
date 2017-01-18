@@ -15,14 +15,7 @@
 
     </div>
 
-    <div id="div2" style="position:relative;top:200px;">
-        <table border="1" id="tb1">
-            <tr><td>sdff</td><td>hjdsk</td></tr>
-
-        </table>
-
-    </div>
-
+   
 
 
 
@@ -34,7 +27,7 @@
        
         count1++;
         count2++;
-        alert(count1+" "+count2);
+     //   alert(count1+" "+count2);
 var d2 = document.getElementById("div1");
 var  d1=document.createElement("div");
 
@@ -47,15 +40,57 @@ d1.innerHTML = ' <input type="text" placeholder="first name" id="'+count1+'"/>\<
 d2.appendChild(d1);
 
 }
-function remove(input){
+    function remove(input) {
+        count1--;
+        count2--;
+
 document.getElementById('div1').removeChild( input.parentNode );
 }
 
-function show(){
-    alert(document.getElementById('1').value);
+
+flag=0;
+function submit() {
+    var table = document.createElement('table');
+    table.setAttribute("id", "tb1");
+    table.setAttribute("border", "1");
+ //   alert(flag + "outside");
+    if (flag) {
+   //     alert(flag + "inside");
+        $("#tb1 tr").remove();
+
+    }
+
+
+   
+
+    for (var i = 0, j = 100; i <=count1; i++, j++) {
+        var tr = document.createElement('tr');
+
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+
+        var tex1 = document.getElementById(i).value;
+        var tex2 = document.getElementById(j).value;
+        var text1 = document.createTextNode(tex1);
+        var text2 = document.createTextNode(tex2);
+
+        td1.appendChild(text1);
+        td2.appendChild(text2);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+
+        table.appendChild(tr);
+    }
+    document.body.appendChild(table);
+    flag=1;
 }
 
+
+
+
+
 </script>
-    <button type="button" onclick="show()" value="show"/>
+
+    <br /><button type="button" onclick="submit()" value="show">submit</button>
 </body>
 </html>
