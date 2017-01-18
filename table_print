@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>
+        </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+      
+        var count12 = 0;
+    </script>
+    <div id="div1">
+        <input type="text" id=0  placeholder="first name" /><input type="text" id=100 placeholder="Last name" />
+        <button type="button" id="add" name="button" onclick="add()"> + </button><button type="button" id="100" onclick="    remove(this)"> - </button>
+
+    </div>
+
+    <div id="div2" style="position:relative;top:200px;">
+        <table border="1" id="tb1">
+            <tr><td>sdff</td><td>hjdsk</td></tr>
+
+        </table>
+
+    </div>
+
+
+
+
+
+<script>
+    count1 = 0;
+    count2 = 100;
+    function add(a, b) {
+       
+        count1++;
+        count2++;
+        alert(count1+" "+count2);
+var d2 = document.getElementById("div1");
+var  d1=document.createElement("div");
+
+
+
+d1.innerHTML = ' <input type="text" placeholder="first name" id="'+count1+'"/>\<input type="text" id="'+count2+'" placeholder="Last name" />\
+                <button type="button" id="1" name="button" onclick="add()" >+</button><button type="button" id="100" onclick="remove(this)">-</button>';
+
+
+d2.appendChild(d1);
+
+}
+function remove(input){
+document.getElementById('div1').removeChild( input.parentNode );
+}
+
+function show(){
+    alert(document.getElementById('1').value);
+}
+
+</script>
+    <button type="button" onclick="show()" value="show"/>
+</body>
+</html>
