@@ -37,7 +37,7 @@
                <input type="text" placeholder="Title" name="title" id="title" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>
                 <b>Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <b>Expiry Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <button type="button" onclick="add()">Add More</button>
+            <button type="button" onclick="add()">Add More</button><button type="button" onclick="remove()">Remove</button>
             </fieldset>
                 </div>
           <br />
@@ -49,7 +49,7 @@
             <b>Start Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>End Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />
             
            
-                <button type="button" onclick="add1()">Add More</button>
+                <button type="button" onclick="add1()">Add More</button><button type="button" onclick="remove1()">Remove</button>
             </div>
             <br />
             <br />
@@ -69,7 +69,7 @@
              \ <input type="text" placeholder="Title" name="title" id="title" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>\
                \ <b>Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\
                \ <b>Expiry Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\
-            \<button type="button" onclick="add()">Add More</button>\
+            \<button type="button" onclick="add()">Add More</button><button type="button" onclick="remove(this)">Remove</button>\
              ';
 
 
@@ -82,13 +82,27 @@
             var d1 = document.createElement("div");
             d1.innerHTML = ' <input type="text" placeholder="Employee Id" name="empid" id="empid" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Designation" name="des" id="des" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />\
             <b>Start Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>End Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />\
-            <button type="button" onclick="add1()">Add More</button><br>\
+            <button type="button" onclick="add1()">Add More</button><br><button type="button" onclick="remove1(this)">Remove</button>\
              ';
 
 
             d2.appendChild(d1);
           
         }
+
+        function remove(input) {
+            
+
+            document.getElementById('degree').removeChild(input.parentNode);
+        }
+        function remove1(input) {
+           
+
+            document.getElementById('emp1').removeChild(input.parentNode);
+        }
+
+
+
   </script>
 </body>
 </html>
