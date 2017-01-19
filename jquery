@@ -1,0 +1,195 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body style="background-color: #e5e5e5">
+    <div style="position:relative;left:300px;width:700px;">
+        <form onsubmit="return validate()">
+            <b style="font-size:20px;">Personal Detail</b>
+            <hr>
+            <input type="text" placeholder="First Name" name="fname" id="fname" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="Last Name" name="lname" id="lname" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp<span id="nameerror"></span><br><br>
+          <!--  <input type="text" placeholder="Employee Id" name="empid" id="empid" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="iderror"></span><br><br>-->
+             <input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:250Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="PAN" name="PAN" id="PAN" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>
+            <input type="email" placeholder="Email" name="email" id="email" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="emailerror"></span><br><br>
+            <input type="text" placeholder="Contact Number" name="mobnumber" id="mobnumber" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="mobileerror"></span><br><br>
+            <input type="text" placeholder="City" name="city" id="city" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="State" name="state" id="state" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="placeerror"></span><br><br>
+       <!--     <input type="submit" value="submit" style="height:30px;width:200x;background-color:#428bca;font-size:20px;border-radius:5px;" />-->
+        <br />
+            <br />
+            <b style="font-size:20px;">Educational Detail</b>
+            <hr>
+            <input type="text" placeholder="Qualification" name="Qualification" id="Qualification" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="mobileerror"></span><br><br>
+            <fieldset style="background-color:#fff;">
+                <legend><b>Additional Certification</b></legend>
+                <input type="text" placeholder="Provider" name="provider" id="provider" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               
+               <input type="text" placeholder="Title" name="title" id="title" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>
+                <b>Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <b>Expiry Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </fieldset>
+            <br />
+            <br />
+            <b style="font-size:20px;">Employee Detail</b>
+            <hr>
+            <input type="text" placeholder="Employee Id" name="empid" id="empid" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />
+            <b>Start Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />
+            <b>End Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="Designation" name="des" id="des" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />
+            <input type="submit" id="submit "value="submit" style="height:30px;width:200x;background-color:#428bca;font-size:20px;border-radius:5px;" />
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </form>
+    </div>
+    <script>
+ /* function validate(){
+
+document.getElementById("nameerror").innerText="";
+document.getElementById("iderror").innerText="";
+document.getElementById("doberror").innerText="";
+document.getElementById("emailerror").innerText="";
+document.getElementById("mobileerror").innerText="";
+document.getElementById("placeerror").style.color="";
+
+
+
+
+var fname=document.getElementById("fname").value;
+
+var lname=document.getElementById("lname").value;
+
+var empid=document.getElementById("empid").value;
+var dob1=document.getElementById("dob")
+var dobb=dob1.value;
+var email=document.getElementById("email").value;
+var mobile=document.getElementById("mobnumber").value;
+var city=document.getElementById("city").value;
+var state=document.getElementById("state").value;
+var pattern=/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+var curr=new Date();
+var dob=new Date(dobb);
+var aaj=curr.getTime();
+var janam=dob.getTime();
+
+if(fname=="")
+{
+document.getElementById("nameerror").innerText="please enter first name";
+document.getElementById("nameerror").style.color="red";
+return false;
+}
+if(lname=="")
+{
+document.getElementById("nameerror").innerText="please enter last name";
+document.getElementById("nameerror").style.color="red";
+return false;
+}
+if(empid=="")
+{
+document.getElementById("iderror").innerText="please enter Employee Id";
+document.getElementById("iderror").style.color="red";
+return false;
+}
+if(dob=="")
+{
+document.getElementById("doberror").innerText="please enter date of birth";
+document.getElementById("doberror").style.color="red";
+alert(curr);
+return false;
+}
+
+if(janam>aaj){
+
+document.getElementById("doberror").innerText="please select valide date of birth";
+document.getElementById("doberror").style.color="red";
+return false;
+}
+
+if(email=="")
+{
+document.getElementById("emailerror").innerText="please enter email";
+document.getElementById("emailerror").style.color="red";
+return false;
+}
+if(!pattern.test(email))
+{
+document.getElementById("emailerror").innerText="please enter valid email";
+document.getElementById("emailerror").style.color="red";
+return false;
+}
+if(mobile=="")
+{
+document.getElementById("mobileerror").innerText="please enter mobile number";
+document.getElementById("mobileerror").style.color="red";
+return false;
+}
+if(mobile.length!=10)
+{
+document.getElementById("mobileerror").innerText="please enter valid mobile number";
+document.getElementById("mobileerror").style.color="red";
+return false;
+}
+if(city=="")
+{
+document.getElementById("placeerror").innerText="please enter city name";
+document.getElementById("placeerror").style.color="red";
+return false;
+}
+if(state=="")
+{
+document.getElementById("placeerror").innerText="please enter state name";
+document.getElementById("placeerror").style.color="red";
+return false;
+}
+
+
+
+}*/
+        $(document).ready(function () {
+            var flag =0;
+            $("input").focusout(function () {
+                if ($(this).val()=="") {
+                    $(this).css("background-color", "red");
+                    flag++;
+                }
+                else
+                {
+                    $(this).css("background-color", "white");
+                    flag--;
+                }
+         
+            });
+          
+            $("#submit").click(function () {
+
+                alert(flag);
+            })
+        });
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
