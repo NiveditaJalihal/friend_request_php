@@ -1,0 +1,94 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+    
+    fieldset{
+    background-color:#fff;
+    }
+
+    </style>
+</head>
+<body style="background-color: #e5e5e5">
+    <div style="position:relative;left:300px;width:700px;">
+        <form >
+            <b style="font-size:20px;">Personal Detail</b>
+            <hr>
+            <input type="text" placeholder="First Name" name="fname" id="fname" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="Last Name" name="lname" id="lname" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp<p id="nameerror">hello how are u</p><br><br>
+          <!--  <input type="text" placeholder="Employee Id" name="empid" id="empid" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="iderror"></span><br><br>-->
+             <input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:250Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="PAN" name="PAN" id="PAN" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>
+            <input type="email" placeholder="Email" name="email" id="email" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="emailerror"></span><br><br>
+            <input type="text" placeholder="Contact Number" name="mobnumber" id="mobnumber" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="mobileerror"></span><br><br>
+            <input type="text" placeholder="City" name="city" id="city" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <input type="text" placeholder="State" name="state" id="state" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="placeerror"></span><br><br>
+       <!--     <input type="submit" value="submit" style="height:30px;width:200x;background-color:#428bca;font-size:20px;border-radius:5px;" />-->
+        <br />
+            <br />
+            <b style="font-size:20px;">Educational Detail</b>
+            <hr>
+            <input type="text" placeholder="Qualification" name="Qualification" id="Qualification" size="49" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="mobileerror"></span><br><br>
+            <div id="degree">
+            <fieldset style="background-color:#fff;">
+                <legend><b>Additional Certification</b></legend>
+                <input type="text" placeholder="Provider" name="provider" id="provider" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+               
+               <input type="text" placeholder="Title" name="title" id="title" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>
+                <b>Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <b>Expiry Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="button" onclick="add()">Add More</button>
+            </fieldset>
+                </div>
+          <br />
+            <br />
+            <b style="font-size:20px;">Employee Detail</b>
+            <hr>
+            <div id="emp1">
+            <input type="text" placeholder="Employee Id" name="empid" id="empid" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Designation" name="des" id="des" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />
+            <b>Start Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>End Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />
+            
+           
+                <button type="button" onclick="add1()">Add More</button>
+            </div>
+            <br />
+            <br />
+                <input type="submit" id="submit "value="submit" style="height:30px;width:200x;background-color:#428bca;font-size:20px;border-radius:5px;" />
+       
+        </form>
+    </div>
+    <script>
+ 
+
+        function add() {
+         
+            var d2 = document.getElementById("degree");
+            var d1 = document.createElement("fieldset");
+            d1.innerHTML ='<legend><b>Additional Certification</b></legend>\
+             \ <input type="text" placeholder="Provider" name="provider" id="provider" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\
+             \ <input type="text" placeholder="Title" name="title" id="title" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;"><span id="doberror"></span><br><br>\
+               \ <b>Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\
+               \ <b>Expiry Date</b><input type="date" placeholder="Date Of Birth" name="dob" id="dob" size="49" style="height:30px;width:200Px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\
+            \<button type="button" onclick="add()">Add More</button>\
+             ';
+
+
+            d2.appendChild(d1);
+            
+        }
+        function add1() {
+         
+            var d2 = document.getElementById("emp1");
+            var d1 = document.createElement("div");
+            d1.innerHTML = ' <input type="text" placeholder="Employee Id" name="empid" id="empid" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Designation" name="des" id="des" style="height:30px;width:200x;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />\
+            <b>Start Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>End Date</b>&nbsp&nbsp<input type="date" placeholder="start date" name="sdate" id="sdate" style="height:30px;width:160px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br /><br />\
+            <button type="button" onclick="add1()">Add More</button><br>\
+             ';
+
+
+            d2.appendChild(d1);
+          
+        }
+  </script>
+</body>
+</html>
