@@ -6,12 +6,12 @@
     <title></title>
     <script>
         function validate(){
-            
+
 document.getElementById("nameerror").innerText="";
 document.getElementById("emailerror").innerText="";
 document.getElementById("mobileerror").innerText="";
 document.getElementById("placeerror").innerText="";
-
+document.getElementById("pwderror").innerText = "";
 
 
 
@@ -25,7 +25,8 @@ var mobile=document.getElementById("mobnumber").value;
 var city=document.getElementById("city").value;
 var state=document.getElementById("state").value;
 var pattern=/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
-
+var pwd1=document.getElementById("pwd1").value;
+var pwd2 = document.getElementById("pwd2").value;
 
 if(fname=="")
 {
@@ -65,6 +66,21 @@ document.getElementById("mobileerror").innerText="please enter valid mobile numb
 document.getElementById("mobileerror").style.color="red";
 return false;
 }
+if (pwd1=="") {
+    document.getElementById("pwderror").innerText = "please enter password";
+    document.getElementById("pwderror").style.color = "red";
+    return false;
+}
+if (pwd2 =="") {
+    document.getElementById("pwderror").innerText = "please enter Confirm password ";
+    document.getElementById("pwderror").style.color = "red";
+    return false;
+}
+if (pwd2 != pwd1) {
+    document.getElementById("pwderror").innerText = "Password do not match ";
+    document.getElementById("pwderror").style.color = "red";
+    return false;
+}
 if(city=="")
 {
 document.getElementById("placeerror").innerText="please enter city name";
@@ -84,102 +100,141 @@ return false;
 
     </script>
     <style>
-         li :hover,li:focus{
-            color:#ffe11b;
+        li :hover, li:focus {
+            color: #ffe11b;
             text-decoration: none;
             cursor: pointer;
         }
     </style>
     <style>
-        body{
-             margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-     max-width: 100%;
-    overflow-x: hidden;
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            max-width: 100%;
+            overflow-x: hidden;
+            overflow-y:hidden;
+            
+
         }
- /*exp*/
+        /*exp*/
 
 
- .modal {
-    display: none;
-    position: fixed;
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-   background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}      </style>
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
     <style>
         .modall {
-    display: none;
-    position: fixed;
-    z-index: 1; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-   background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    
-}
-
-/* Modal Content */
-.modall-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.closee {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-        .closee:hover,
-        .closee:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
+        /* Modal Content */
+        .modall-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
 
+        /* The Close Button */
+        .closee {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .closee:hover,
+            .closee:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
     </style>
+    <style>
+        .modalll {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modalll-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .closeee {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .closeee:hover,
+            .closeee:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+
     <script>
 function show() {
     document.getElementById("myModal").style.display = "block"
@@ -198,14 +253,32 @@ function changea() {
     //document.getElementById('main').innerHTML = document.getElementById(vara).innerHTML;
     document.getElementById("electronics").style.display = "block"
     document.getElementById("appliances").style.display = "none"
-    
+    document.getElementById("men").style.display = "none"
+    document.getElementById("customers").style.display = "none"
 }
 function changeb() {
 
     //document.getElementById('main').innerHTML = document.getElementById(vara).innerHTML;
     document.getElementById("appliances").style.display = "block"
     document.getElementById("electronics").style.display = "none"
+    document.getElementById("men").style.display = "none"
+    document.getElementById("customers").style.display = "none"
+}
+function changec() {
 
+    //document.getElementById('main').innerHTML = document.getElementById(vara).innerHTML;
+    document.getElementById("men").style.display = "block"
+    document.getElementById("electronics").style.display = "none"
+    document.getElementById("appliances").style.display = "none"
+    document.getElementById("customers").style.display = "none"
+}
+function changed() {
+
+    //document.getElementById('main').innerHTML = document.getElementById(vara).innerHTML;
+    document.getElementById("customers").style.display = "block"
+    document.getElementById("electronics").style.display = "none"
+    document.getElementById("appliances").style.display = "none"
+    document.getElementById("men").style.display = "none"
 }
 
     </script>
@@ -223,125 +296,346 @@ function changeb() {
             }
         }
     </script>
+    <script>
+
+    function showww() {
+        document.getElementById("myModalll").style.display = "block"
+    }
+    function gayabbb() {
+        document.getElementById("myModalll").style.display = "none"
+    }
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("myModalll")) {
+            document.getElementById("myModalll").style.display = "none"
+        }
+    }
+    </script>
+    <script>
+        function product() {
+
+            document.getElementById("pro_nameerror").innerText="";
+            document.getElementById("pro_iderror").innerText="";
+            document.getElementById("pro_priceerror").innerText="";
+            document.getElementById("pro_caterror").innerText="";
+            document.getElementById("pro_subcaterror").innerText="";
+
+
+
+
+            var pro_name = document.getElementById("pro_name").value;
+            var pro_id = document.getElementById("pro_id").value;
+            var pro_price = document.getElementById("pro_price").value;
+            var pro_cat = document.getElementById("pro_cat").value;
+            var pro_subcat = document.getElementById("pro_subcat").value;
+
+            if (pro_name =="") {
+                document.getElementById("pro_nameerror").innerText = "please enter product name";
+                document.getElementById("pro_nameerror").style.color = "red";
+                return false;
+            }
+            if (pro_id =="") {
+                document.getElementById("pro_iderror").innerText = "please enter product ID";
+                document.getElementById("pro_iderror").style.color = "red";
+                return false;
+            }
+            if (pro_price =="") {
+                document.getElementById("pro_priceerror").innerText = "please enter product price";
+                document.getElementById("pro_priceerror").style.color = "red";
+                return false;
+            }
+
+            if (pro_cat =="") {
+                document.getElementById("pro_caterror").innerText = "please enter product category";
+                document.getElementById("pro_caterror").style.color = "red";
+                return false;
+            }
+
+            if (pro_subcat =="") {
+                document.getElementById("pro_subcaterror").innerText = "please enter product name";
+                document.getElementById("pro_subcaterror").style.color = "red";
+                return false;
+            }
+
+        }
+
+
+
+    </script>
+
+
+
+
 
 </head>
 <body>
-   
-    <div id="header"  style="background-color:#2874f0;position:relative;width:1240px;height:120px;">
-        <ul style="position:relative;margin:0px;padding:0px;left:850px;">
-            
+    
+    <div id="header" style="background-color:#2874f0;position:relative;width:1400px;height:120px;">
+        <ul style="position:relative;margin:0px;padding:0px;left:1000px;">
 
 
 
-            <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>Add products</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
-            <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>Display Customers</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <li style="display:inline;color:#f0f0f0;font-weight:500;" onclick="showww();"><b>Add products</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+            <li style="display:inline;color:#f0f0f0;font-weight:500;" onclick="changed()"><b>Display Customers</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
             <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>My orders</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
 
         </ul>
-<img src="logo.png" width="140" height="25" style="position:relative;top:35px;left:80px;"/>
+        <a href="index.html">    <img src="logo.png" width="140" height="25" style="position:relative;top:35px;left:80px;" /></a>
 
 
-        <form id="search-form" name="search" action="" method="get"style="width:1000px;">
-            <input id="search-input"placeholder="  Search For Products" name="search" type="text" style="position:relative;left:240px;top:-25px;width:700px;height:32px;font-size:18px;">
-          <input src="orange.png" name="submit" type="image" style="position:relative;width:40px;height:45px;left:235px;top:-10px;">
+        <form id="search-form" name="search" action="" method="get" style="width:1000px;">
+            <input id="search-input" placeholder="  Search For Products" name="search" type="text" style="position:relative;left:240px;top:-25px;width:700px;height:32px;font-size:18px;">
+            <input src="orange.png" name="submit" type="image" style="position:relative;width:40px;height:45px;left:235px;top:-10px;">
         </form>
-        <button  style="position:relative;left:1020px;top:-60px;border-radius:10px;width:80px;height:30px;background-color:green"id="myBtn" onclick="show()"><b style="color:white">SignUp</b></button>
-  
-        
-           <button type="button" style="position:relative;left:1030px;top:-60px;border-radius:10px;width:80px;height:30px;background-color:green"onclick="showw()" ><b style="color:white" >Log In</b></button>
+        <button style="position:relative;left:1020px;top:-60px;border-radius:10px;width:80px;height:30px;background-color:green" id="myBtn" onclick="show()"><b style="color:white">SignUp</b></button>
 
-<ul style="position:relative;top:-60px;left:350px;">
-    <li style="display:inline;color:#f0f0f0;font-weight:500;"><b onclick="changea();">ELECTRONICS</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
-  
-    
-    
-      <li style="display:inline;color:#f0f0f0;font-weight:500;"><b onclick="changeb();">APPLIANCES</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
-    <li style="display:inline;color:#f0f0f0;font-weight:500;"onclick="change('men');"><b>MEN</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
-    <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>HOME&FURNITURE</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
-    <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>KIDS</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
-</ul>
 
-</div>
+        <button type="button" style="position:relative;left:1030px;top:-60px;border-radius:10px;width:80px;height:30px;background-color:green" onclick="showw()"><b style="color:white">Log In</b></button>
+        <button type="button" style="position:relative;left:1050px;top:-60px;border-radius:10px;width:80px;height:30px;background-color:green" ><b style="color:white">Cart(0)</b></button>
+
+        <ul style="position:relative;top:-60px;left:350px;">
+            <li style="display:inline;color:#f0f0f0;font-weight:500;"><b onclick="changea();">ELECTRONICS</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+            <li style="display:inline;color:#f0f0f0;font-weight:500;"><b onclick="changeb();">APPLIANCES</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+            <li style="display:inline;color:#f0f0f0;font-weight:500;" onclick="changec();"><b>MEN</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+            <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>HOME&FURNITURE</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+            <li style="display:inline;color:#f0f0f0;font-weight:500;"><b>KIDS</b></li>&nbsp;&nbsp;&nbsp;&nbsp;
+        </ul>
+
+    </div>
     
     <div id="main">
-        <div id="electronics" style="display:none;">
-            <table>
+        
+        <div id="electronics" style="display:none;position:relative;left:250px;">
+
+           
+            <table style="background-color:whitesmoke;border-bottom:solid"cellspacing="50">
                 <tr>
-                <td>
-                    <img src="ecom.jpg" width="250" height="180" />"
-                    <h2>a</h2>
-                </td>
-                <td><img src="ecom.jpg" width="250" height="180" />"
-<h2>a</h2></td>
-                <td><img src="ecom.jpg" width="250" height="180" />" 
-<h2>a</h2></td>
+                    <td>
+                        <img src="s8.jpg" width="250" height="180" />
+                        
+                    </td>
+                    <td>
+                      <h2 style="position:relative;top:-60px;">Samsung Galaxy s8</h2>
+                        <p style="position:relative;top:-55px;">Black sapphire,32GB </p> 
+
+                    </td>
+                   
+
+
+                    <td>
+                        <h3 style="position:relative;top:-60px;">Rs 50,000</h3>
+                        <p style="position:relative;top:-55px;">EMI from Rs1,741/month</p>
+                        <button type="button" style="position:relative;border-radius:10px;width:100px;height:40px;background-color:#4682B4;"><b style="color:white">Add To Cart</b></button>
+                    </td>
                 </tr>
-                <tr><td><img src="ecom.jpg" width="250" height="180" />"
-<h2></h2></td><td><img src="<img src="ecom.jpg" width="250" height="180" />"</td><td><img src="ecom.jpg" width="250" height="180" />"</td></tr>
+                <tr>
+                    <td>
+                        <img src="s9.jpg" width="250" height="180" />
+                        
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">Samsung Galaxy s8</h2>
+                        <p style="position:relative;top:-55px;">Black sapphire,32GB </p>
+
+                    </td>
+
+
+
+                    <td>
+                        <h3 style="position:relative;top:-60px;">Rs 50,000</h3>
+                        <p style="position:relative;top:-55px;">EMI from Rs1,741/month</p>
+                        <button type="button" style="position:relative;border-radius:10px;width:100px;height:40px;background-color:#4682B4;"><b style="color:white">Add To Cart</b></button>
+</td>
+                </tr>
+              
+                
             </table>
         </div>
-        <div id="appliances" style="display:none;">
-            <img src="ecom.jpg" width="250" height="180" />b
-        </div>
-        <div id="men" style="display:none;">
-            <img src="ecom.jpg" width="250" height="180" />c
-        </div>
-        <div id="electronics" style="display:none;"></div>
-        <div id="electronics" style="display:none;"></div> 
+        <div id="appliances" style="display:none;position:relative;left:250px;">
+            <table style="background-color:whitesmoke;" cellspacing="50">
+                <tr>
+                    <td>
+                        <img src="images.jpg" width="250" height="180" />
 
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">whirlpool Refrigerator</h2>
+                        <p style="position:relative;top:-55px;">190L,Direct Cool </p>
+
+                    </td>
+
+
+
+                    <td>
+                        <h3 style="position:relative;top:-60px;">Rs 50,000</h3>
+                        <p style="position:relative;top:-55px;">EMI from Rs1,741/month</p>
+                        <button type="button" style="position:relative;border-radius:10px;width:100px;height:40px;background-color:#4682B4;"><b style="color:white">Add To Cart</b></button>
+</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="bravia.jpg" width="250" height="180" />
+
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">Sony bravia</h2>
+                        <p style="position:relative;top:-55px;">Black,60 inch/p>
+
+                    </td>
+
+
+
+                    <td>
+                        <h3 style="position:relative;top:-60px;">Rs 50,000</h3>
+                        <p style="position:relative;top:-55px;">EMI from Rs1,741/month</p>
+                        <button type="button" style="position:relative;border-radius:10px;width:100px;height:40px;background-color:#4682B4;"><b style="color:white">Add To Cart</b></button>
+</td>
+                </tr>
+
+
+            </table>
+        </div>
+        <div id="men" style="display:none;position:relative;left:250px;">
+            <table style="background-color:whitesmoke;" cellspacing="50">
+                <tr>
+                    <td>
+                        <img src="ghadi.jpg" width="250" height="180" />
+
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">Rolex Watch r1</h2>
+                        <p style="position:relative;top:-55px;">Golden </p>
+
+                    </td>
+
+
+
+                    <td>
+                        <h3 style="position:relative;top:-60px;">Rs 99,000</h3>
+                        <p style="position:relative;top:-55px;">EMI from Rs1,800/month</p>
+                        <button type="button" style="position:relative;border-radius:10px;width:100px;height:40px;background-color:#4682B4;"><b style="color:white">Add To Cart</b></button>
+</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="rolex.jpg" width="250" height="180" />
+
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">Rolex Watch r2</h2>
+                        <p style="position:relative;top:-55px;">golden </p>
+
+                    </td>
+
+
+
+                    <td>
+                        <h3 style="position:relative;top:-60px;">Rs 100,000</h3>
+                        <p style="position:relative;top:-55px;">EMI from Rs1,999/month</p>
+                        <button type="button" style="position:relative;border-radius:10px;width:100px;height:40px;background-color:#4682B4;"><b style="color:white">Add To Cart</b></button>
+</td>
+                </tr>
+
+
+            </table >
+        </div>
+     
+        <div id="customers" style="display:none;position:relative;left:250px;">
+            
+            <table style="background-color:whitesmoke;" cellspacing="50">
+                <tr>
+                    <td>
+                        <img src="sachin.jpg" width="250" height="180" />
+
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">NIRAJ KUMAR</h2>
+                        <p style="position:relative;top:-55px;">Total Orders=100 </p>
+                        <p style="position:relative;top:-50px;">Total amount=Rs1000000 </p>
+
+                    </td></tr>
+                <tr>
+                    <td>
+                        <img src="sachin2.jpg" width="250" height="180" />
+
+                    </td>
+                    <td>
+                        <h2 style="position:relative;top:-60px;">Manish Kumar</h2>
+                        <p style="position:relative;top:-55px;">Total Orders=200 </p>
+                        <p style="position:relative;top:-50px;">Total amount=Rs2000000 </p>
+
+
+                    </td>
+
+
+
+                    
+                </tr>
+              
+
+
+            </table>
+
+        </div>
     </div>
     <div id="middle">
         <div id="myModal" class="modal">
 
-   
 
-                <div style="width:900px;height:400px;border:1px solid;" class="modal-content">
-                    <span class="close" onclick="gayab()">&times;</span>
-                    <div id="leftsignup" style="width:250px;height:400px;background-color:#2874f0;
+
+            <div style="width:900px;height:400px;border:1px solid;" class="modal-content">
+                <span class="close" onclick="gayab()">&times;</span>
+                <div id="leftsignup" style="width:250px;height:400px;background-color:#2874f0;
              margin: 0;
     padding: 0;
     border: 0;
     outline: 0;position:relative;top:-20px;
         }
  ">
-                        <h2 style="color:white;">&nbsp&nbspSignup</h2>
-                        <pre>
-                        <b style="color:white;font-size:16px;">
+                    <h2 style="color:white;">&nbsp&nbspSignup</h2>
+                    <pre>
+                    <b style="color:white;font-size:16px;">
  we do not share your
  personal details 
  with anyone</b>
 </pre>
-                        <img src="ecom.jpg" width="250" height="180" style="position:relative;top:75px;" />
-                    </div>
-                    <div id="rightsignup" style="width:620px;height:500px;position:relative;left:260px;top:-350px;">
-                        <form onsubmit="return validate();">
-                            <b style="font-size:30px;">Fill The Details</b>
-                            <hr>
-                            <input type="text" placeholder="First Name" name="fname" id="fname" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="text" placeholder="Last Name" name="lname" id="lname" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp<span id="nameerror"></span><br><br>
-                          
-                            <input type="email" placeholder="Email" name="email" id="email" size="49" style="height:30px;width:400px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="emailerror"></span><br><br>
-                            <input type="text" placeholder="Mobile Number" name="mobnumber" id="mobnumber" size="49" style="height:30px;width:400px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="mobileerror"></span><br><br>
-                            <input type="text" placeholder="City" name="city" id="city" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input type="text" placeholder="State" name="state" id="state" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="placeerror"></span><br><br>
-                            <input type="submit" value="submit" style="height:35px;width:550px;background-color:#428bca;font-size:20px;border-radius:5px;" />
-                        </form>
-                    </div>
+                    <img src="ecom.jpg" width="250" height="180" style="position:relative;top:75px;" />
                 </div>
+                <div id="rightsignup" style="width:620px;height:500px;position:relative;left:260px;top:-380px;">
+                    <form onsubmit="return validate();">
+                        <b style="font-size:30px;">Fill The Details</b>
+                        <hr>
+                        <input type="text" placeholder="First Name" name="fname" id="fname" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="text" placeholder="Last Name" name="lname" id="lname" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp<span id="nameerror"></span><br><br>
 
-
-       <!--  -->     <!--/div>-->
-
-
-
+                        <input type="email" placeholder="Email" name="email" id="email" size="49" style="height:30px;width:400px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="emailerror"></span><br><br>
+                        <input type="text" placeholder="Mobile Number" name="mobnumber" id="mobnumber" size="49" style="height:30px;width:400px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="mobileerror"></span><br><br>
+                        <input type="password" placeholder="Password" name="pwd1" id="pwd1" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="password" placeholder="Confirm Password" name="pwd2" id="pwd2" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp<span id="pwderror"></span><br><br>
+                         <input type="text" placeholder="City" name="city" id="city" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input type="text" placeholder="State" name="state" id="state" style="height:30px;width:200px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="placeerror"></span><br><br>
+                        <input type="submit" value="submit" style="height:35px;width:550px;background-color:#428bca;font-size:20px;border-radius:5px;" />
+                    </form>
+                </div>
             </div>
+
+
+            <!--  -->     <!--/div>-->
+
+
+
+        </div>
 
 
 
 
         <div id="myModall" class="modall">
-            <div style="width:400px;height:300px;border:1px solid;"class="modall-content"">
-                <span class="closee" onclick="gayabb()">&times;</span>
+            <div style="width:400px;height:300px;border:1px solid;" class="modall-content" >
+                <span class=" closee" onclick="gayabb()">
+                &times;</span>
                 <div id="signin">
                     <form>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -355,15 +649,66 @@ function changeb() {
                         &nbsp&nbsp&nbsp&nbsp&nbsp<input type="email" placeholder="Email" name="email" id="emaill" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="emaillerror"></span><br><br>
 
                         &nbsp&nbsp&nbsp&nbsp&nbsp<input type="password" placeholder="Password" name="password" id="passwordd" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="passworderror"></span><br><br>
-                      <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" value="submit" style="height:35px;width:350px;background-color:#428bca;font-size:20px;border-radius:5px;">Log In</button>-->
+                        <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" value="submit" style="height:35px;width:350px;background-color:#428bca;font-size:20px;border-radius:5px;">Log In</button>-->
                     </form>
                     <img src="ecom.jpg" width="400" height="90" style="position:relative;top:13px;" />
                 </div>
             </div>
 
 
-</div>
+        </div>
+        <div id="myModalll" class="modalll">
+            
+            <div style="width:400px;height:500px;border:1px solid;" class="modalll-content">
+                <span class=" closeee" onclick="gayabbb()">
+                    &times;
+                </span>
+                <div id="add product">
+                    <form onsubmit="return product()">
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
+
+
+                        <b style="font-size:30px;">Add Product</b>
+                        <hr>
+
+                        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Product Name" name="pro_name" id="pro_name" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="pro_nameerror"></span><br><br>
+
+                        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Product ID" name="pro_id" id="pro_id" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="pro_iderror"></span><br><br>
+                       
+                        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Product Price" name="pro_price" id="pro_price" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="pro_priceerror"></span><br><br>
+                        
+                        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Product Category" name="pro_cat" id="pro_cat" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="pro_caterror"></span><br><br>
+                        
+                        &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="Product Sub-Category" name="pro_subcat" id="pro_subcat" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="pro_subcaterror"></span><br><br>
+                    <!--    &nbsp&nbsp&nbsp&nbsp&nbsp<input type="file" placeholder="Product Sub-Category" name="pro_subcat" id="pro_subcat" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="pro_subcaterror"></span><br><br>-->
+                        
+
+
+
+
+
+
+
+
+
+
+
+                        
+                         &nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" value="submit" style="height:35px;width:350px;background-color:#428bca;font-size:20px;border-radius:5px;">Add Product</button>
+                    </form>
+                    <img src="ecom.jpg" width="400" height="90" style="position:relative;top:13px;" />
+                </div>
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        </div>
 
 
 
@@ -376,10 +721,10 @@ function changeb() {
         </div>
 
 
-        
-    
+
+
     <div id="bottom"></div>
- 
-    
+
+
 </body>
 </html>
