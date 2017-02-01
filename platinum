@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment1
+{
+    class PlatinumCustomer : Customer
+    {
+
+        public PlatinumCustomer(int acc, String name, int balance, String type, int mbala, String cid, String cname)
+        {
+            accn = acc;
+            nam = name;
+            bal = balance;
+            Custyp = type;
+            mbal = mbala;
+            try
+            {
+
+                int f = 0;
+                foreach (char c in cid)
+                {
+                    if (!char.IsDigit(c))
+                        f = 1;
+                }
+                if (f == 1)
+                    throw new NotdigitException();
+
+            }
+            catch (NotdigitException nd)
+            {
+
+                Console.WriteLine(nd.msg);
+
+            }
+
+            try
+            {
+
+                int f = 0;
+                foreach (char c in cname)
+                {
+                    if (!char.IsLetter(c))
+                        f = 1;
+                }
+                if (f == 1)
+                    throw new InvalidnameException();
+
+            }
+            catch (InvalidnameException ind)
+            {
+
+                Console.WriteLine(ind.mssg);
+
+            }
+        }
+        public override void PersonalDetail()
+        {
+            Console.WriteLine("name:" + nam + "Customer Type:" + Custyp + "  account_number: " + accn);
+
+        }
+        public override void BalanceDetail()
+        {
+            Console.WriteLine("your account balance is" + bal);
+        }
+        public override void Deposit(int i)
+        {
+            bal = bal + i;
+            Console.WriteLine("deposit successful");
+            Console.WriteLine("your balance " + bal);
+
+        }
+
+        public override void Withdrawal(int i, string typ)
+        {
+            try
+            {
+                if (bal - i < 0)
+                {
+                    throw new LessthanzeroException();
+                }
+            }
+            catch (LessthanzeroException le)
+            {
+                Console.WriteLine(le.msssg);
+            }
+            int flags = 0;
+
+            if (typ == "cash")
+            {
+
+                if (i > 150000)
+                    flags = 1;
+            }
+            else if (typ == "cheque")
+            {
+                if (i > 250000)
+                {
+                    flags = 1;
+                }
+            }
+            else if (typ == "atm")
+            {
+                if (i > 30000)
+                {
+                    flags = 1;
+                }
+            }
+
+            if (flags == 0)
+            {
+                if (bal < mbal)
+                {
+                    bal = bal + i;
+                    Console.WriteLine("you can't withdraw");
+                }
+                else
+                {
+                    bal = bal - i;
+                    Console.WriteLine("withdraw successful");
+                    Console.WriteLine("your balance " + bal);
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("you can't withdraw");
+            }
+
+        }
+
+
+    }
+}
