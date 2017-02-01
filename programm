@@ -1,0 +1,191 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment1
+{
+    class Program
+    {
+       // CustomerCollection r = new CustomerCollection();
+       
+        static void Main()
+        
+       {
+           
+            RegularCustomer r = new RegularCustomer(105, "niraj", 1000, "regular customer", 1000, "1011", "niraj");
+            
+              GoldCustomer g = new GoldCustomer(106, "manish", 10000000, "gold customer", 500, "1011", "niraj");
+              PlatinumCustomer p = new PlatinumCustomer(107, "nitish", 500000, "platinum customer", 0, "1011", "niraj");
+
+              Program obj = new Program();
+              string name="";
+              int accnum=0;
+              int option=0;
+              Customer c;
+              Customer cc;
+              RegularCustomer rc;
+              PlatinumCustomer pc;
+              GoldCustomer gc;
+              List<Customer> custList = new List<Customer>();
+              int type=0;
+
+
+              do
+              {
+                  Console.WriteLine("Enter Your Choice : \n 1. Add Customer \n 2. Display List of Customers \n 3. Display by Index \n 5. Exit");
+                  option = Int32.Parse(Console.ReadLine());
+                  if (option == 1)
+                  {
+                      Console.WriteLine("Enter Type of Customer : \n 1.PlatinumCustomer \n 2.GoldCustomer \n 3.RegularCustomer");
+                      type = Int32.Parse(Console.ReadLine());
+                      
+                          Console.Write("Enter Name : ");
+                          name = Console.ReadLine();
+                      
+
+
+                     
+                          Console.Write("Enter Account Number : ");
+                          accnum = int.Parse(Console.ReadLine());
+                      }
+
+
+
+
+                      if (type == 1)
+                      {
+                          c =  new PlatinumCustomer(accnum, name, 500000, "platinum customer", 0, "1011", "niraj");
+                        
+
+                          custList.Add(c);
+                        
+                      }
+                      else if (type == 2)
+                      {
+                          c = new GoldCustomer(accnum, name, 10000000, "gold customer", 500, "1011", "niraj");
+                   
+
+                          custList.Add(c);
+
+                       
+                      }
+
+                      else if (type == 3)
+                      {
+                          c = new PlatinumCustomer(accnum, name, 500000, "platinum customer", 0, "1011", "niraj");
+                         
+
+                          custList.Add(c);
+                         
+
+
+                     
+                      }
+
+
+
+
+
+
+
+                  
+                  else if (option == 2)
+                  {
+                      Console.WriteLine("");
+                      foreach (Customer i in custList)
+                      {
+                          Console.WriteLine("Name     Accno");
+                          Console.WriteLine(i.nam + "         " + i.accn);
+                      }
+                      Console.WriteLine();
+                  }
+                  else if (option == 3)
+                  {
+                      Console.Write("Enter Index of Customer : ");
+                      int j = Int32.Parse(Console.ReadLine());
+                      cc = custList.ElementAt(j) as Customer;
+                      Console.WriteLine(cc.nam);
+                      Console.WriteLine(cc.accn);
+                  }
+
+
+              } while (option < 5);
+
+           
+           
+
+
+
+
+        }
+        //public void menu()
+        //{
+        //    CustomerCollection r = new CustomerCollection();
+        //    Console.WriteLine("please select your choice");
+        //    Console.WriteLine("1 add a new customer");
+        //    Console.WriteLine("2 display list of customer");
+        //    Console.WriteLine("3 display particular customer");
+        //    Console.WriteLine("4 remove customer");
+        //    Console.WriteLine("5 update detail of customer");
+        //    Console.WriteLine("6 sort customer");
+        //    int res1 = int.Parse(Console.ReadLine());
+        //    if(res1==1)
+        //    {
+        //        Console.WriteLine("choose the type of customer");
+        //        Console.WriteLine("1 regular");
+        //        Console.WriteLine("2 gold");
+        //        Console.WriteLine("3 platinum");
+        //        int res2 = int.Parse(Console.ReadLine());
+
+        //        if (res2 == 1)
+        //        {
+        //            Console.WriteLine("enter account number");
+        //            int accn = int.Parse(Console.ReadLine());
+        //            Console.WriteLine("enter name");
+        //            string name = Console.ReadLine();
+        //          //  CustomerCollection r = new CustomerCollection();
+        //            r.Add(accn,name,1);
+
+
+                   
+        //        }
+        //        if (res2 == 2)
+        //        {
+        //            Console.WriteLine("enter account number");
+        //            int accn = int.Parse(Console.ReadLine());
+        //            Console.WriteLine("enter name");
+        //            string name = Console.ReadLine();
+
+        //        }
+        //        if (res2 == 3)
+        //        {
+        //            Console.WriteLine("enter account number");
+        //            int accn = int.Parse(Console.ReadLine());
+        //            Console.WriteLine("enter name");
+        //            string name = Console.ReadLine();
+
+        //        }
+
+
+
+
+        //    }
+        //    else if (res1 == 2)
+        //    {
+                
+        //        r.Add(1,"fdf",0);
+        //        Console.WriteLine("call to show");
+        //    }
+
+
+
+        //}
+
+
+
+
+    }
+
+}
