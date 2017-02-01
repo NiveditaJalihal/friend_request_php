@@ -1,0 +1,184 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment1
+{
+    class Program
+    {
+       
+       
+        static void Main()
+        
+       {
+              Program obj = new Program();
+              string name="";
+              int accnum=0;
+              int option=0;
+              Customer c;
+              Customer cc;
+             
+              List<Customer> custList = new List<Customer>();
+              int type=0;
+
+
+              do
+              {
+                  Console.WriteLine("Enter Your Choice : \n 1. Add Customer \n 2. Display Customers \n 3. Display by Index \n 4.display by name \n 5.remove by name \n 6.remove by index \n 7.update \n 8.sort");
+                  option = Int32.Parse(Console.ReadLine());
+                  if (option == 1)
+                  {
+                      Console.WriteLine("Enter Type of Customer : \n 1.RegularCustomer \n 2.GoldCustomer \n 3.platinum customer");
+                      type = Int32.Parse(Console.ReadLine());
+                      
+                          Console.Write("Enter Name : ");
+                          name = Console.ReadLine();
+                      
+
+
+                     
+                          Console.Write("Enter Account Number : ");
+                          accnum = int.Parse(Console.ReadLine());
+                      
+
+
+
+
+                      if (type == 1)
+                      {
+                          c =  new RegularCustomer(accnum, name, 500000, "platinum customer", 0, "1011", "niraj");
+                        
+
+                          custList.Add(c);
+                        
+                      }
+                      else if (type == 2)
+                      {
+                          c = new GoldCustomer(accnum, name, 10000000, "gold customer", 500, "1011", "niraj");
+                   
+
+                          custList.Add(c);
+
+                       
+                      }
+
+                      else if (type == 3)
+                      {
+                          c = new PlatinumCustomer(accnum, name, 500000, "platinum customer", 0, "1011", "niraj");
+                         
+
+                          custList.Add(c);
+                         
+
+
+                     
+                      }
+
+              }
+
+
+
+
+
+                  
+                  else if (option == 2)
+                  {
+                      Console.WriteLine("");
+                      foreach (Customer i in custList)
+                      {
+                          Console.WriteLine("Name     Accno");
+                          Console.WriteLine(i.nam + "         " + i.accn);
+                      }
+                      Console.WriteLine();
+                  }
+                  else if (option == 3)
+                  {
+                      Console.Write("Enter Index ");
+                      int j = Int32.Parse(Console.ReadLine());
+                      cc = custList.ElementAt(j) as Customer;
+                      Console.WriteLine(cc.nam);
+                      Console.WriteLine(cc.accn);
+                  }
+                  else if (option == 4)
+                  {
+                      Console.Write("Enter name");
+                      String na = Console.ReadLine();
+                      foreach (var i in custList)
+                      {
+                          int f = 0;
+                          if (i.nam == na)
+                          {
+                              Console.WriteLine(i.nam);
+                              Console.WriteLine(i.accn);
+                              f = 1;
+
+                          }
+                          if(f==0)
+                          {
+                              Console.WriteLine("not found");
+                          }
+                      }
+
+                  }else if(option==5){
+
+                       Console.Write("Enter Index ");
+                      int j = Int32.Parse(Console.ReadLine());
+                      if(j<custList.Count)
+                      {
+                          custList.RemoveAt(j);
+                      }
+                      else{
+                          Console.WriteLine("please enter valid index");
+                      }
+
+                  }
+                  else if(option==6){
+
+                       Console.Write("Enter name ");
+                       String na = Console.ReadLine();
+                       for(int i=0;i<custList.Count;i++)
+                      {
+                          int f = 0;
+                          if (custList[i].nam == na)
+                          {
+                              custList.Remove(custList[i]);
+                              f = 1;
+
+                          }
+                          if(f==0)
+                          {
+                              Console.WriteLine("not found");
+                          }
+                      }
+
+                  }
+                  else if (option == 7)
+                  {
+
+                     
+                     foreach (var i in custList.OrderBy(Customer => Customer.nam))
+                      {
+                          Console.WriteLine(i.nam);
+                      }
+
+                  }
+
+              } while (option < 9);
+
+           
+           
+
+
+
+
+        }
+
+
+
+
+
+    }
+
+}
