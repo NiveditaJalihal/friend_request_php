@@ -1,0 +1,134 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment1
+{
+
+
+    class NotdigitException : ApplicationException
+    {
+        public string msg;
+        public NotdigitException()
+        {
+            msg = "customer id must be numeric";
+        }
+    }
+   
+    class   InvalidnameException: ApplicationException
+    {
+        public string mssg;
+        public InvalidnameException()
+        {
+            mssg = "customer name invalid";
+        }
+    }
+    
+     class  LessthanzeroException : ApplicationException
+    {
+        public string msssg;
+        public LessthanzeroException()
+        {
+            msssg = "less than 0 ";
+        }
+    }
+   abstract class Customer
+    {
+      int accountNumber;
+      string name;
+      int balance;
+      string CustomerType;
+      int minbal;
+      int customerId;
+
+      public int cid
+      {
+          get
+          {
+              return customerId;
+          }
+          set
+          {
+              customerId = value;
+          }
+      }
+       
+       
+       
+       
+       
+       
+       public int accn
+      {
+          get
+          {
+              return accountNumber;
+          }
+          set
+          {
+              accountNumber = value;
+          }
+      }
+
+      public String nam
+      {
+          get
+          {
+              return name;
+          }
+          set
+          {
+              name = value;
+          }
+      }
+
+      public int bal
+      {
+          get
+          {
+              return balance;
+          }
+          set
+          {
+              balance = value;
+          }
+      }
+
+      public string Custyp
+      {
+          get
+          {
+              return CustomerType;
+          }
+          set
+          {
+              CustomerType = value;
+          }
+      }
+         public int mbal
+      {
+          get
+          {
+              return minbal;
+          }
+          set
+          {
+              minbal = value;
+          }
+      }
+
+     abstract  public void PersonalDetail();
+     abstract  public   void BalanceDetail();
+     abstract   public void Withdrawal(int j,String dfgg);
+     abstract  public  void Deposit(int i);
+       
+  
+    
+
+   }
+ 
+ 
+
+}
