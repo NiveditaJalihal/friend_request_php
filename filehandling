@@ -1,0 +1,251 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace FileAssignment
+{
+    class Program
+    {
+        static void Main()
+        {
+            int option;
+            int type;
+            string name;
+            int accnum;
+            do
+            {
+                Console.WriteLine("Enter Your Choice : \n 1. Add Customer \n 2. Display Customers \n 3. Display by Index \n 4.display by name \n 5.remove by name \n 6.remove by index \n 7.update \n 8.sort");
+                option = Int32.Parse(Console.ReadLine());
+                if (option == 1)
+                {
+                    Console.WriteLine("Enter Type of Customer : \n 1.RegularCustomer \n 2.GoldCustomer \n 3.platinum customer");
+                    type = Int32.Parse(Console.ReadLine());
+
+                    Console.Write("Enter Name : ");
+                    name = Console.ReadLine();
+
+
+
+
+                    Console.Write("Enter Account Number : ");
+                    accnum = int.Parse(Console.ReadLine());
+
+
+
+
+
+                    if (type == 1)
+                    {
+                        FileStream fs1 = new FileStream("file.txt", FileMode.Append, FileAccess.Write);
+                        StreamWriter sw = new StreamWriter(fs1);
+                        sw.WriteLine("name:-"+name+    " account number"+accnum+"type=Regular Customer ");
+                        sw.Close();
+                        fs1.Close();
+
+                    }
+                    else if (type == 2)
+                    {
+                        FileStream fs1 = new FileStream("file.txt", FileMode.Append, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs1);
+                    sw.WriteLine("name:-" + name + " account number" + accnum + "type=Gold Customer ");
+                    sw.Close();
+                    fs1.Close();
+
+
+
+                   }
+
+                    else if (type == 3)
+                    {
+                        FileStream fs1 = new FileStream("file.txt", FileMode.Append, FileAccess.Write);
+                        StreamWriter sw = new StreamWriter(fs1);
+                        sw.WriteLine("name:-" + name + " account number" + accnum + "type=Gold Customer ");
+                        sw.Close();
+                        fs1.Close();
+
+
+
+                    }
+
+                    }
+
+
+
+
+
+
+                else if (option == 2)
+                {
+                    FileStream fs1 = new FileStream("file.txt", FileMode.Open, FileAccess.Read);
+                    StreamReader sr = new StreamReader(fs1);
+                    while (!sr.EndOfStream)
+                    {
+                        string s = sr.ReadLine();
+                        Console.WriteLine(s);
+                    }
+                }
+                else if (option == 3)
+                {
+                    Console.Write("Enter index : ");
+                    int ind =Int32.Parse( Console.ReadLine());
+
+                    FileStream fs1 = new FileStream("file.txt", FileMode.Open, FileAccess.Read);
+                    StreamReader sr = new StreamReader(fs1);
+                    string line = File.ReadLines("file.txt").Skip(ind).Take(1).First();
+                    Console.WriteLine(line);
+                    fs1.Close();
+                    sr.Close();
+                   
+                }
+                else if (option == 4)
+                {
+                    String line;
+                Console.Write("Enter name");
+                String na = Console.ReadLine();
+               FileStream fs1 = new FileStream("file.txt", FileMode.Open, FileAccess.Read);
+               StreamReader sr = new StreamReader("file.txt");
+                {
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (line.Contains(na))
+                        {
+                            Console.WriteLine(line); 
+                        }
+                    }
+                }​
+
+                }
+                else if (option == 5)
+                {
+
+                    Console.Write("Enter Index ");
+                    int j = Int32.Parse(Console.ReadLine());
+
+                    String[] line = File.ReadAllLines("file.txt");
+                    List<string> list = new List<string>(line);
+                    list.RemoveAt(j);
+                    FileStream fs1 = new FileStream("file.txt", FileMode.Create, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs1);
+                    foreach (var i in list)
+                    {
+                        sw.WriteLine(i);
+                        
+                    }
+                    sw.Close();
+                    fs1.Close();
+                }
+                else if (option == 6)
+                {
+
+                    Console.Write("Enter name ");
+                    String na = Console.ReadLine();
+                    String line;
+                    int i = 0;
+                    int final=0;
+                    FileStream fs1 = new FileStream("file.txt", FileMode.Open, FileAccess.Read);
+                    StreamReader sr = new StreamReader("file.txt");
+                    
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                           
+                            if (line.Contains(na))
+                            {
+                                
+                                final = i;
+                            }
+                            i++;
+                        }
+                        sr.Close();
+                        fs1.Close();
+
+                        String[] lines = File.ReadAllLines("file.txt");
+                        List<string> list = new List<string>(lines);
+                        list.RemoveAt(final);
+                        FileStream fs11 = new FileStream("file.txt", FileMode.Create, FileAccess.Write);
+                        StreamWriter sww = new StreamWriter(fs11);
+                        foreach (var ii in list)
+                        {
+                            sww.WriteLine(ii);
+
+                        }
+                        sww.Close();
+                        fs11.Close();
+
+
+                }
+                else if (option == 7)
+                {
+                    Console.Write("Enter old name ");
+                    String oldna = Console.ReadLine();
+                    Console.Write("Enter new name ");
+                    String newna = Console.ReadLine();
+                  String line;
+                  int i = 0;
+                  int final = 0;
+                  FileStream fs1 = new FileStream("file.txt", FileMode.Open, FileAccess.Read);
+                  StreamReader sr = new StreamReader("file.txt");
+
+                  while ((line = sr.ReadLine()) != null)
+                  {
+
+                      if (line.Contains(oldna))
+                      {
+
+                          final = i;
+                      }
+                      i++;
+                  }
+                  sr.Close();
+                  fs1.Close();
+                  String[] lines = File.ReadAllLines("file.txt");
+                  List<string> list = new List<string>(lines);
+                  list.RemoveAt(final);
+                  list.Insert(final, newna);
+                  FileStream fs11 = new FileStream("file.txt", FileMode.Create, FileAccess.Write);
+                  StreamWriter sww = new StreamWriter(fs11);
+                  foreach (var ii in list)
+                  {
+                      sww.WriteLine(ii);
+
+                  }
+                  sww.Close();
+                  fs11.Close();
+
+
+
+
+                }
+                else if (option == 8)
+                {
+                    String[] lines = File.ReadAllLines("file.txt");
+                    List<string> list = new List<string>(lines);
+                    list.Sort();
+                    FileStream fs11 = new FileStream("file.txt", FileMode.Create, FileAccess.Write);
+                    StreamWriter sww = new StreamWriter(fs11);
+                    foreach (var ii in list)
+                    {
+                        sww.WriteLine(ii);
+
+                    }
+                    sww.Close();
+                    fs11.Close();
+
+
+
+
+                }  
+
+            } while (option < 9);
+
+        
+        
+        
+        
+        
+        
+        }
+    }
+}
