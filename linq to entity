@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FinalLinqEntity
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Final f = new Final();
+            var v = f.customers.Select(t => t);
+            foreach (var item in v)
+            {
+                Console.WriteLine(item.name+" "+item.address);
+            }
+
+            //Console.WriteLine("enter account");
+            //var s = Console.ReadLine();
+            //Console.WriteLine("balance");
+            //int b = Int32.Parse(Console.ReadLine());
+
+            //f.accounts.Add(new account { account_id = s, balance = b });
+          
+            //var d = f.accounts.Where(t => t.account_id == "100");
+            //account ac = d.Single();
+            //f.accounts.Remove(ac);
+          
+            //var da = f.accounts.Where(a =>a);
+            //account act = da.Single();
+            //act.balance = 50;
+            //f.SaveChanges();
+            var k = f.che("2");
+            var j = k.Single();
+            Console.WriteLine(j);
+
+
+
+        }
+    }
+}
