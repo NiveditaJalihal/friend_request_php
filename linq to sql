@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace FinalLinqSql
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Classes1DataContext cd = new Classes1DataContext();
+            var q1 = cd.accounts.Select(t => t);
+            foreach (var item in q1)
+            {
+                Console.WriteLine(item.account_id+" "+item.balance);
+            }
+
+            var d = cd.accounts.Where(t => t.balance== 400);
+            //account a = d.Single();
+            //cd.accounts.DeleteOnSubmit(a);
+            //cd.SubmitChanges();
+            account a;
+            foreach (var item in d)
+            {
+                
+
+            }
+
+            //var d1 = cd.accounts.Select(t =>t);
+            ////account ac = d1.Single();
+            ////ac.balance = 50000;
+            //foreach (var item in d1)
+            //{
+            //    item.balance = 200;
+            //}
+
+            //cd.SubmitChanges();
+            //var p = cd.che("2");
+            //var n = p.Single();
+            //Console.WriteLine(n.name);
+            
+
+
+        }
+    }
+}
