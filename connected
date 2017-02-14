@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace ExamAdo
+{
+   public  class Detail
+    {
+       SqlConnection con = new SqlConnection("data source=.;database=Exam;integrated security=true;");
+       SqlCommand cmd=new SqlCommand();
+       public void Insert()
+       {
+           Console.WriteLine("enter product name");
+           string name = Console.ReadLine();
+           Console.WriteLine("enter vendor name");
+           string vendor = Console.ReadLine();
+           Console.WriteLine("enter category name");
+           string category = Console.ReadLine();
+           Console.WriteLine("enter price");
+           int price = Int32.Parse(Console.ReadLine());
+           con.Open();
+
+
+           cmd.Parameters.AddWithValue("@name", name);
+           cmd.Parameters.AddWithValue("@vend",vendor);
+           cmd.Parameters.AddWithValue("@cat", category);
+           cmd.Parameters.AddWithValue("@price",price);
+           cmd.CommandText = "insert into product values(@name,@vend,@cat,@price)";
+           cmd.Connection=con;
+           cmd.ExecuteNonQuery();
+           con.Close();
+
+
+
+       }
+       public void GetDetail()
+       {
+           Console.WriteLine("enter product name");
+           string name = Console.ReadLine();
+           cmd.CommandText = "select * from product where product_name=@name";
+           cmd.Connection = con;
+           cmd.Parameters.AddWithValue("@name", name);
+           con.Open();
+           SqlDataReader rd = cmd.ExecuteReader();
+           while(rd.Read())
+           {
+               Console.WriteLine(rd[0]+"  "+rd[1]+"  "+rd[2]+"  "+rd[3]+"  "+rd[4]);
+           }
+         
+           con.Close();
+       }
+       public void Sort()
+       {
+           cmd.CommandText = "select product_name from product order by product_name";
+           cmd.Connection = con;
+           con.Open();
+           SqlDataReader rd = cmd.ExecuteReader();
+           while (rd.Read())
+           {
+               Console.WriteLine(rd[0]);
+           }
+       }
+      public void Update()
+      {
+          Console.WriteLine("enter product id");
+          int id=Int32.Parse(Console.ReadLine());
+          Console.WriteLine("enter new price");
+          int price=Int32.Parse(Console.ReadLine());
+          cmd.CommandText="update product set price=@price where id=@id";
+          cmd.Parameters.AddWithValue("@id",id);
+          cmd.Parameters.AddWithValue("@price",price);
+          cmd.Connection = con;
+          con.Open();
+          int res=cmd.ExecuteNonQuery();
+          con.Close();
+
+
+      }
+
+       }
+
+    }
+
