@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace ExamDisconnected
+{
+   public  class Disconn
+    {
+        SqlConnection con = new SqlConnection("data source=.;database=Exam;integrated security=true;");
+        SqlDataAdapter da = new SqlDataAdapter();
+        DataSet ds = new DataSet();
+       
+        public void Select()
+        {
+            Console.WriteLine("please enter product name");
+            string name = Console.ReadLine();
+            string sql ="select * from product where product_name=@name";
+            da.SelectCommand = new SqlCommand(sql, con);
+            da.SelectCommand.Parameters.AddWithValue("@name", name);
+         
+            da.Fill(ds,"product");
+
+            foreach (DataRow item in ds.Tables["product"].Rows)
+            {
+                foreach (DataColumn item1 in ds.Tables["product"].Columns)
+                {
+                    Console.Write(item[item1]+"\t");
+                }
+                Console.WriteLine();
+            }
+
+
+
+        }
+       public void delete()
+        {
+            int r = 0;
+            int c = 0;
+            int i = 0;
+       Console.WriteLine("enter product name to delete");
+         string id=Console.ReadLine();
+           DataRow rw = ds.Tables["product"].NewRow();
+           foreach (DataRow item in ds.Tables["product"].Rows)
+           {
+               foreach (DataColumn item1 in ds.Tables["product"].Columns)
+               {
+                   if(item[item1].Equals(id))
+                   {
+                       
+                      
+       
+                      i = 1;
+                       rw=item;
+
+                   }
+                
+               }
+               if (i == 1)
+               {
+                   rw.Delete();
+               
+                   i = 0;
+               }
+               Console.WriteLine();
+           }
+
+           SqlCommandBuilder cbd = new SqlCommandBuilder(da);
+           da.Update(ds.Tables["product"]);
+        }
+      public void insert()
+       {
+           Console.WriteLine("enter product name");
+           string name = Console.ReadLine();
+           Console.WriteLine("enter vendor name");
+           string vendor = Console.ReadLine();
+           Console.WriteLine("enter category");
+           string category = Console.ReadLine();
+           Console.WriteLine("enter price");
+           int price = Int32.Parse(Console.ReadLine());
+           DataRow rw = ds.Tables["product"].NewRow();
+           rw["product_name"] = name;
+           rw["vendor"] = vendor;
+           rw["category"] = category;
+           rw["price"] = price;
+           ds.Tables["product"].Rows.Add(rw);
+           SqlCommandBuilder cbd = new SqlCommandBuilder(da);
+           da.Update(ds.Tables["product"]);
+
+
+
+
+
+
+       }
+      public void update()
+      {
+          Console.WriteLine("enter product id");
+          int id = Int32.Parse(Console.ReadLine());
+          int i = 0;
+          Console.WriteLine("enter price");
+          int price = Int32.Parse(Console.ReadLine());
+          foreach (DataRow item in ds.Tables["product"].Rows)
+          {
+               foreach (DataColumn item1 in ds.Tables["product"].Columns)
+          {
+              if (item["Id"].Equals(id))
+              {
+                  item["price"] = 10;
+
+              }
+
+          }
+          }
+
+
+          SqlCommandBuilder cbd = new SqlCommandBuilder(da);
+          da.Update(ds.Tables["product"]);
+
+
+
+
+
+
+      }
+
+   }
+	
+
+
+
+    }
+
