@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MvcApplication1.Controllers
+{
+    public class Default1Controller : Controller
+    {
+        //
+        // GET: /Default1/
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+        
+      [HttpPost]
+        public ActionResult Show(int? id=1)
+        {
+           string id1 = Request["t"];
+           int id11 = Int32.Parse(id1);
+            ViewData["key1"] = id11;
+            string id2 = Request["t1"];
+            int id12 = Int32.Parse(id2);
+            ViewData["key2"] = id12;
+          return View();
+        }
+         [HttpGet]
+      public ActionResult Show()
+      {
+          string id1 = Request.QueryString["t"];
+          int id11 = Int32.Parse(id1);
+          ViewData["key1"] = id11;
+          string id2 = Request.QueryString["t1"];
+          int id12 = Int32.Parse(id2);
+        //  ViewData["key2"] = id12;
+          ViewBag.val = id12;
+          return View();
+      }
+        public ActionResult Display()
+        {
+            return View();
+        }
+        public ActionResult Demo1()
+        {
+            return View();
+        }
+        public ActionResult Demo2()
+        {
+            return View();
+        }
+        public ActionResult Demo3()
+        {
+            return View();
+        }
+        public string ShowString()
+        {
+            return "this is sample string";
+        }
+
+        public JsonResult ShowJson()
+        {
+            return new JsonResult { Data = "name:anuya",JsonRequestBehavior= JsonRequestBehavior.AllowGet };
+        }
+        //public ViewResult ShowView()
+        //{
+        //    return View();
+        //}
+        public ActionResult ShowView()
+        {
+            return View();
+        }
+        public ActionResult show1()
+        {
+
+            TempData["k2"] = Request["t1"];
+            return Redirect("/Default1/Demo1");
+        }
+        //public ActionResult show2()
+        //{
+
+        //    //return RedirectToRoute("Default2");
+        //    //
+        //    //return RedirectPermanent("/Default1/Demo1");
+             
+        //}
+        public ContentResult ShowContent()
+        {
+            return new ContentResult {Content="<b>jo bole so nihal</b>"};
+            
+        }
+        //public ActionResult ShowMethod(string t1)
+        //{
+
+        //    TempData["name"]=t1;
+        //    return Redirect("/Default1/Demo1");
+        //}
+        public ActionResult ShowMethod(FormCollection fm)
+        {
+
+            TempData["name"] =fm["t1"];
+            TempData["age"] = fm["t2"];
+            TempData["password"] = fm["t3"];
+            return Redirect("/Default1/Demo1");
+        }
+    }
+}
