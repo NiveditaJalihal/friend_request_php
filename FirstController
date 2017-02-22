@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Text;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
+
+namespace StudentDay1.Controllers
+{
+    public class FirstController : Controller
+    {
+       
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Verify(string username, string pwd)
+        {
+            SqlConnection con = new SqlConnection("data source=.;database=SMS;integrated security=true;");
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", pwd);
+            con.Open();
+            cmd.CommandText = "select * from account ";
+
+
+            cmd.Connection = con;
+            SqlDataReader rd = cmd.ExecuteReader();
+            int flag = 0;
+            while (rd.Read())
+            {
+                string usernam = Convert.ToString(rd[1]);
+                string password = Convert.ToString(rd[2]);
+                byte[] data = Convert.FromBase64String(password);
+
+                //decrypt data
+                byte[] decrypted = ProtectedData.Unprotect(data, null, DataProtectionScope.LocalMachine);
+               string pass= Encoding.Unicode.GetString(decrypted);
+                if (pwd.Equals(pass) && usernam.Equals(username))
+                {
+
+
+                   
+                        flag = 1;
+                        ViewBag.message = usernam;
+                        break;
+                    
+                }
+
+
+            }
+            con.Close();
+
+            if (username == "apurva" && flag==1)
+            {
+                con.Open();
+                cmd.CommandText = "select * from notification";
+                cmd.Connection = con;
+                rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    ViewBag.username = rd[1];
+
+                }
+                ViewBag.status = "admin";
+                
+            }
+
+            if (flag == 0)
+                ViewBag.message="match not found";
+            return View();
+        }
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        public ActionResult Register(string name, string pwd)
+        {
+            SqlConnection con = new SqlConnection("data source=.;database=SMS;integrated security=true;");
+            SqlCommand cmd = new SqlCommand();
+            var data = Encoding.Unicode.GetBytes(pwd);
+            byte[] encrypted = ProtectedData.Protect(data, null, DataProtectionScope.LocalMachine);
+
+            //return as base64 string
+            string password= Convert.ToBase64String(encrypted);
+            cmd.Parameters.AddWithValue("@username", name);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.CommandText = "insert into account values(@username,@password)";
+            con.Open();
+            cmd.Connection = con;
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+
+
+
+
+
+
+
+            return View();
+        }
+      
+        public ActionResult forgot( string username)
+        {
+            SqlConnection con = new SqlConnection("data source=.;database=SMS;integrated security=true;");
+            SqlCommand cmd = new SqlCommand();
+            con.Open();
+            cmd.CommandText = "insert into notification values(@username)";
+            cmd.Parameters.AddWithValue("@username",username);
+            cmd.Connection = con;
+            cmd.ExecuteNonQuery();
+            con.Close();
+            
+            
+            
+            return View();
+        }
+
+
+
+    }
+}
