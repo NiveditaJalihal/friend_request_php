@@ -1,0 +1,152 @@
+@{
+    ViewBag.Title = "Student Management System";
+}
+<html>
+<head>
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+        .modall {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modall-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .closee {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .closee:hover,
+            .closee:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+    <script>
+        function showw() {
+            document.getElementById("myModall").style.display = "block"
+        }
+        function gayabb() {
+            document.getElementById("myModall").style.display = "none"
+        }
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("myModall")) {
+                document.getElementById("myModall").style.display = "none"
+            }
+        }
+    </script>
+</head>
+<body>
+   
+    
+   
+        <!-- Top content -->
+        <div class="top-content" >
+
+            <div class="inner-bg">
+                <div class="container" style="position:relative;top:200px;width:800px;">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box" style="border-style:solid;">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    
+                                    <p>Enter your username and password </p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-lock"></i>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <form role="form" action="First/Verify" method="post" class="login-form">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Username</label>
+                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Password</label>
+                                        <input type="password" name="pwd" placeholder="Password..." class="form-password form-control" id="form-password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="button" class="btn btn-danger" onclick="showw()" style="position:relative;left:168px;">Forgot Password</button> 
+                                    
+                                    <hr class="colorgraph">​
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+    <div id="myModall" class="modall">
+        <div style="width:400px;height:300px;border:1px solid;" class="modall-content">
+            <span class=" closee" onclick="gayabb()">
+                &times;
+            </span>
+            <div id="signin">
+                <form action="First/forgot" method="post">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+                    <b style="font-size:10px;">Forgot Password</b>
+                    <hr>
+
+                    &nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" placeholder="username" name="username" id="emaill" size="49" style="height:30px;width:350px;background-color:#fff;font-size:20px;border-radius:5px;"><span id="emaillerror"></span><br><br>
+
+                   
+                     &nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" value="submit" style="height:35px;width:350px;background-color:#428bca;font-size:20px;border-radius:5px;">Submit</button>
+                </form>
+               
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
+
