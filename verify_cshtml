@@ -1,0 +1,13 @@
+@{
+    ViewBag.Title = "Verify";
+}
+
+<h2>Verify</h2>
+
+welcome @ViewBag.message;
+
+@if(ViewBag.status=="admin")
+{ 
+@ViewBag.username
+ 
+}
