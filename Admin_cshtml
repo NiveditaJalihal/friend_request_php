@@ -1,0 +1,14 @@
+@{
+    ViewBag.Title = "Admin";
+}
+
+@using (Html.BeginForm("Register", "First"))
+{
+    <label>user name:</label> @Html.TextBox("name", "", htmlAttributes: new { placeholder = "enter your name" })<br /><br />
+    <label>password:</label> @Html.Password("pwd")<br /><br />
+
+
+
+    <input type="submit" /><br />
+   
+}
