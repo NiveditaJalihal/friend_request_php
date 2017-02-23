@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>	
+<head>
+<title>STUDENT MANAGEMENT SYSTEM</title>
+
+ <style>
+        .modall {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modall-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .closee {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .closee:hover,
+            .closee:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+	<style>
+
+body{
+	background: url(bg1.jpg) no-repeat 0px 0px;
+	font-family: 'Open Sans', sans-serif;
+	background-size:cover;
+	
+	height:633px;
+}
+.wrap{
+	margin: 0 auto;
+	width: 80%;
+}
+
+h1 {
+	font-family: 'Exo 2', sans-serif;
+	  text-align: center;
+	  padding-top: 1em;
+	  font-weight: 400;
+	  color: #2B2B36;
+	  font-size: 2em;
+}
+.login-form {
+	background: #2b2b36;
+	position: relative;
+	width: 30%;
+	margin: 3% auto 0 auto;
+	text-align: center;
+	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-o-border-radius: 15px;
+}
+.head img {
+	width: 100%;
+}
+.avtar img {
+  margin: 2em 0 0;
+  border-radius: 30px;
+  width:100px;
+  height:100px;
+}
+
+input[type="text"] {
+	  width: 70%;
+	  padding: 1em 2em 1em 3em;
+	  color: #9199aa;
+	  font-size: 18px;
+	  outline: none;
+	  background: url(adm.png) no-repeat 10px 15px;
+	  border: none;
+	  font-weight: 100;
+	  border-bottom: 1px solid#484856;
+	  margin-top: 2em;
+}
+ input[type="password"]{
+	  width: 70%;
+	  padding: 1em 2em 1em 3em;
+	  color: #dd3e3e;
+	  font-size: 18px;
+	  outline: none;
+	  background: url(key.png) no-repeat 10px 23px;
+	  border: none;
+	  font-weight: 100;
+	  border-bottom: 1px solid#484856;
+	  margin-bottom: 3em;
+ }
+.key {
+   background: url(pass.png) no-repeat 447px 17px;
+}
+input[type="submit"]{
+  font-size: 30px;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: #3ea751;
+  width: 100%;
+  padding: 18px 0;
+  border-bottom-left-radius: 15px;
+	
+	
+	border-bottom-right-radius: 15px;
+	
+	cursor: pointer;
+}
+input[type="submit"]:hover {
+	background: #ff2775;
+  border-bottom-left-radius: 15px;
+	
+}
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+   
+    <script>
+        function showw() {
+            document.getElementById("myModall").style.display = "block"
+        }
+        function gayabb() {
+            document.getElementById("myModall").style.display = "none"
+        }
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("myModall")) {
+                document.getElementById("myModall").style.display = "none"
+            }
+        }
+    </script>
+<body>
+
+ <!--SIGN UP-->
+ <h1>STUDENT MANAGEMENT SYSTEM</h1>
+<div class="login-form" style="position:relative;bottom:18px;">
+	
+			<div class="clear"> </div>
+	<div class="avtar">
+		<img src="images/smsnew.jpg" />
+	</div>
+			<form>
+					<input type="text" class="text"  placeholder="Username" >
+						<div class="key">
+					<input type="password"  placeholder="Password">
+						</div>
+			</form>
+	<div class="signin">
+		<input type="submit" value="Login" style="position:relative;bottom:5px;" >
+		<br>
+	<a href="#" style="text-decoration:none;position:relative;font-family: 'Exo 2', sans-serif;bottom:3px;" onclick="showw()"><span style="color:red;font-size:25px;">Forgot Password?</span></a>
+	</div>
+	
+	
+</div>
+ 
+<div id="myModall" class="modall">
+        
+            
+         
+                
+				<div class="login-form" style="position:relative;bottom:35px;width:450px;padding:0px;">
+	<span class=" closee" onclick="gayabb()">
+                &times;
+            </span>
+			<div class="clear"> </div>
+	<div class="avtar">
+		<img src="images/smsnew.jpg" />
+	</div>
+<br>
+<br>
+<br>
+<br>
+			<span style="color:blue;font-size:18px;font-family:'Exo 2', sans-serif;">A Notification Will Be Send To The Adminstrator.</span>
+			<form action="First/forgot" method="post">
+					<input type="text" class="text"  placeholder="Username" >
+					
+			</form>
+			<br>
+			<br>
+			<br>
+			<br>
+	<div class="signin">
+		<input type="submit" value="Submit" style="position:relative;bottom:5px;" >
+		
+	</div>
+	
+	
+</div>
+               
+            
+        
+
+
+    </div>
+</body>
+</html>
